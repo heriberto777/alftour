@@ -1,0 +1,44 @@
+{
+    "Excursiones" : [
+        {
+         "id": 1,
+         "Name": "Puerto Plata Tour",
+         "Price": 202,
+         "Discount": 5,
+         "urlImage": "https://alftour.com/images/Excursiones/PuertoPlata/Puerto-Plata-3.jpg",
+         "Detaills": "We drive 30 minutes to Puerto Plata where we visit the Brugal Rum Factory, the fortress san Felipe",
+         "Ciudad": "Puerto Plata"
+ 
+        },
+        {
+         "id": 2,
+         "Name": "DOWN HILL MOUNTAIN BIKE",
+         "Price": 202,
+         "Discount": 5,
+         "urlImage": "https://alftour.com/images/Excursiones/mountainbike/dh5.jpg",
+         "Detaills": "We call this the Down Hill River Experience! At Sabaneta you stop for the best yogurt, and then we go to the mountains of Moca",
+         "Ciudad": "Puerto Plata"
+ 
+     },
+     {
+       "id": 3,
+       "Name": "Samana Bacardi Island",
+       "Price": 202,
+       "Discount": 5,
+       "urlImage": "https://alftour.com/images/Excursiones/bicadiisland/sam07.jpg",
+       "Detaills": "Come with us to one the most beautiful and famous beach of the Caribbean and enjoy an unforgettable experience.",
+       "Ciudad": "Samana"
+ 
+   },
+     {
+     "id": 4,
+     "Name": "Los Haitises",
+     "Price": 202,
+     "Discount": 5,
+     "urlImage": "https://alftour.com/images/Excursiones/loshaitises/losh20.jpg",
+     "Detaills": "Let us take you to “Los Haitises” where you will see local flora and fauna. Walk in the footsteps of the Tainos and Pirates. From Sanches",
+     "Ciudad": "Samana"
+ 
+   }
+   ]
+ }
