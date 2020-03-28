@@ -1,0 +1,79 @@
+
+.navbar {
+    width: 100%;
+    padding: 0.5rem 0;
+    background-color: #009F42;
+  }
+  
+  .Navbar__brand {
+    color: #ffffff;
+  
+    display: flex;
+    align-items: center;
+  }
+  
+  .Navbar__brand:hover {
+    color: #ffffff;
+    text-decoration: none;
+  }
+  
+  .Navbar__brand-logo {
+    width: 60px;
+    margin-right: 0.5rem;
+  }
+
+#main .carousel-inner img {
+    max-height: 40vh;
+    object-fit: cover;
+    filter: grayscale(70%);
+
+}
+
+#carousel {
+    position: relative;
+}
+
+#carousel .overlay {
+    z-index: 1;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    color: white;
+}
+
+#carousel .overlay .container,
+#carousel .overlay .row {
+    height: 100%;
+}
+
+
+#footer {
+    background-color: #F9F9F9;
+}
+
+.fb-logo {
+    width: 33px;
+    height: 25.48px;
+    margin-right: 0.5rem;
+  }
+
+  .tw-logo {
+    width: 33px;
+    height: 25.48px;
+    margin-right: 0.5rem;
+  }
+
+  .ut-logo {
+    width: 33px;
+    height: 25.48px;
+    margin-right: 0.5rem;
+  }
+
+  .ig-logo {
+    width: 33px;
+    height: 25.48px;
+    margin-right: 0.5rem;
+  }
