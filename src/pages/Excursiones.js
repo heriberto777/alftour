@@ -1,25 +1,24 @@
 import React from 'react';
 // import ReactDOM from 'react-dom';
+// import { Link } from 'react-router-dom';
 
-import Excursion from '../components/Excursion';
+import ExcursionList from '../components/ExcursionList';
+import PageLoading from '../components/PageLoading';
+import PageError from '../components/PageError';
+import MiniLoader from '../components/MiniLoader';
+import api from '../api';
+
 
 
 class Excursiones extends React.Component {
 
         constructor(props){
             super(props);
-            this.state = { 
-                loading: false,
-                error: null,
-                data: {
-                    //declaramos los componentes del JSON
-                    // countryInfo: [],
-                    Excursiones: []
-        
-            },
-            nextPage: 0
+        this.state = {
+            loading: true,
+            error: false,
+            data: undefined,
         };
-        
     }
 
     componentDidMount(){
@@ -30,9 +29,14 @@ class Excursiones extends React.Component {
         //     window.onscroll = this.detectScrollEnd;
         // }
         this.fetchExcursiones();
+
+        this.internalId = setInterval(this.fetchExcursiones, 5000);
         
     }
 
+    UNSAFE_componentWillMount() {
+        clearInterval(this.internalId);
+    }
     // componentDidUpdate() {
     //     if(this.state.loading){
     //         window.onscroll = () => {};
@@ -46,74 +50,56 @@ class Excursiones extends React.Component {
         this.setState({loading: true, error: null});
     
         try {
-            const resp = await fetch(`https://raw.githubusercontent.com/heriberto777/alftour/master/data.json`);
-            const data = await resp.json();
+            // const resp = await api.excursiones.list();
+            // const data = await resp.json();
     
-            this.setState({
-                loading: false,
-                data: {
-                    // countryInfo: data.countryInfo,
-                    Excursiones: [].concat(this.state.data.Excursiones, data.Excursiones)
-                },
-                // nextPage: this.state.nextPage + 1
-            });
-            
+            // this.setState({
+            //     loading: false,
+            //     data: {
+            //         // countryInfo: data.countryInfo,
+            //         Excursiones: [].concat(this.state.data.Excursiones, data.Excursiones)
+            //     },
+            //     // nextPage: this.state.nextPage + 1
+            // });
+            const data = await api.excursiones.list();
+            this.setState({ loading: false, data: data });
         } catch (error) {
             this.setState({loading: false, error: error});
         }
     };
    
 
-    detectScrollEnd = () => {
-        const contentHeight = document.body.offsetHeight;
-        const scrollPosition = window.scrollY + window.innerHeight;
-        if (scrollPosition >= contentHeight) {
-            if (this.state.nextPage < 26){
-                this.fetchExcursiones();
-            }
-        }
-    };
+    // detectScrollEnd = () => {
+    //     const contentHeight = document.body.offsetHeight;
+    //     const scrollPosition = window.scrollY + window.innerHeight;
+    //     if (scrollPosition >= contentHeight) {
+    //         if (this.state.nextPage < 26){
+    //             this.fetchExcursiones();
+    //         }
+    //     }
+    // };
 
     
     render() {
 
-        if (this.state.loading === true){
-            return (
-                <div>Loading....</div>
-            )
-        }
-        if(this.state.error){
-            return (
-            <div>{this.state.error}</div>
-            )
-        }
-       return (
-        
+        if (this.state.loading === true && !this.state.data) {
+            return <PageLoading />;
+          }
       
-        <div id="cards-sp" className="mt-4">
-                <div className="container">
-                    <div className="row">
-                        <div className="col text-center text-uppercase">
-                            <small>
-                                Quiere conocer,
-                            </small>
-                            <h2>Republica Dominicana, Excurciones</h2>
-                        </div>
-        </div>
-       
-        <div className="row">
-            {this.state.data.Excursiones.map(excur => (
-                <div className="col-md-4 mb-4" key={excur.id}>
-                    <Excursion excursion={excur} />
-                    {/* // console.log(excur) */}
-                </div>
-            ))}
-        </div>
-        </div>
-        </div>
-       
+          if (this.state.error) {
+            return <PageError error={this.state.error} />;
+          }
 
-       );
+
+          return (
+            <React.Fragment>
+                <div className="containter">
+                <ExcursionList excursion={this.state.data} />
+            
+                {this.state.loading && <MiniLoader />}
+                </div>
+            </React.Fragment>
+          );
     }
 }
 

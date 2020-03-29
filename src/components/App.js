@@ -11,8 +11,6 @@ function App(){
             <Switch>
               <Route exact path="/" component={Home} />
               <Route exact path="/excursiones" component={Excursiones} />
-              {/* <Route exact path="/badges/new" component={BadgeNew} /> */}
-              {/* <Route component={NotFound} /> */}
             </Switch>
           </Layout>
         </BrowserRouter>

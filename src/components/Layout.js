@@ -1,8 +1,8 @@
 import React from 'react';
 
 import Navbar from './Navbar';
-import Footer from './Footer';
-import Header from './Header';
+// import Footer from './Footer';
+// import Header from './Header';
 // import Contenido from './Excursion';
 
 function Layout(props) {
@@ -11,9 +11,9 @@ function Layout(props) {
     return (
       <React.Fragment>
         <Navbar />
-        <Header />
+
         {props.children}
-        <Footer />
+        {/* <Footer /> */}
       </React.Fragment>
     );
   }
